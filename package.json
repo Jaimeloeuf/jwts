@@ -1,0 +1,22 @@
+{
+  "name": "jwts",
+  "version": "0.1.0",
+  "description": "Simple JWT creation and verification package with build in Asymmetric key generation and use build on top of the jsonwebtoken package.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JWT",
+    "JWE",
+    "jwts",
+    "JWTs",
+    "simple",
+    "asymmetric"
+  ],
+  "author": "Jaimeloeuf",
+  "license": "MIT",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}
