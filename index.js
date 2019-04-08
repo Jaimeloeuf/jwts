@@ -25,6 +25,7 @@
 // Dependencies
 const jwt = require('jsonwebtoken'); // External dependency from NPM by Auth0
 const { promisify } = require('util');
+const generateKeys = require('./generateKeys');
 // Forge crypto package for node (https://www.npmjs.com/package/node-forge)
 // const forge = require('node-forge');
 
@@ -40,26 +41,6 @@ const verify = promisify(jwt.verify);
 const create_token = (private_key) => (signOption) => (payload, options = {}) => sign(payload, private_key, merge(signOption)(options));
 // Promisified verify method curried. Resolves with the decoded token, else rejects with an error.
 const verify_token = (public_key) => (verifyOption) => (token, options = {}) => verify(token, public_key, merge(verifyOption)(options));
-
-
-// Function to generate the Public/Private key pairs.
-function generateKeys() {
-    // Import and cache in memory only when used to generate keys. Garbage collected when function ends
-    const { generateKeyPairSync } = require('crypto');
-
-    // Generate a key with the RS256 algorithm.
-    return generateKeyPairSync('rsa', {
-        modulusLength: 1024, // Can be changed to be longer like 4096 for added security
-        publicKeyEncoding: {
-            type: 'spki',
-            format: 'pem'
-        },
-        privateKeyEncoding: {
-            type: 'pkcs8',
-            format: 'pem',
-        }
-    });
-}
 
 
 // Function to get a create and verify token method with Asymmetric Keys built into them.
