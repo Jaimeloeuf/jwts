@@ -13,7 +13,13 @@ const generateKeyPairSync = (function () {
     try {
         return require('crypto').generateKeyPairSync;
     } catch (err) {
+        // Log error either to console, log file or logging service
         console.error(err);
+
+        // Force the entire process to stop and kill all async processes!
+        process.exit(1);
+        // Below is a safer process, by killing the process with a thrown error.
+        // throw new Error(err);
     }
 })()
 
