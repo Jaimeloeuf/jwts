@@ -23,19 +23,15 @@
 */
 
 // Dependencies
-const jwt = require('jsonwebtoken'); // External dependency from NPM by Auth0
-const { promisify } = require('util');
+const { sign, verify } = require('./jsonwebtoken');
 const generateKeys = require('./generateKeys');
+const extract = require('./extract');
 // Forge crypto package for node (https://www.npmjs.com/package/node-forge)
 // const forge = require('node-forge');
 
 
 // Super simple utility function for merging objects. Only shadow merging is needed.
 const merge = (o1) => (o2) => ({ ...o1, ...o2 });
-
-// Using the promisify method from the util module, Promisify the original jwt methods
-const sign = promisify(jwt.sign);
-const verify = promisify(jwt.verify);
 
 // Promisified sign method curried. Resolves with signed JWT, else rejects with an error.
 const create_token = (private_key) => (signOption) => (payload, options = {}) => sign(payload, private_key, merge(signOption)(options));
@@ -80,22 +76,6 @@ function forgeKey(privateKey) {
 }
 
 
-const extract = {
-    // Only for services where the JWT is passed in the Auth HTTP header
-    /*  Pure function to extract token from request header and returns it
-        FORMAT OF TOKEN --> Authorization: Bearer <access_token>
-        Split on space, get token from array and return it.
-        Express automatically coerces keys in the header object to be lowercase. */
-    jwt_in_header: (req) => req.headers['authorization'].split(' ')[1],
-
-    // Only for web-apps where the JWT is passed as a cookie
-    jwt_in_cookie: (req) => req.cookies.jwt,
-
-    // Function for extracting CSRF token from the request from a web-app client
-    CSRF_token: (req) => req.headers['x-csrf-token'],
-}
-
-
 module.exports = {
     // All the token extraction related functions as 1 extraction object
     extract,
@@ -105,7 +85,7 @@ module.exports = {
     verify_token,
 
     /*  Function to generate a new key pair and apply it into the curried functions' closure.
-        Exporting the with the key in their closures */
+        Exporting the methods with the keys applied into their closures already */
     apply_keys,
 
     // getPublicKey is exported for other modules/services to get latest public key to verify the JWT

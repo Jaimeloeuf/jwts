@@ -1,18 +1,22 @@
 'use strict'; // Enforce use of strict verion of JavaScript
 
 /*	@Doc
-    900kb of ram
+    Module exports a function that is able to generate the RSA key pair
+    All the settings/options for the key generation are hard coded in this module
+
+    @Todo
+    - Create a configuration moudule to allow user to change the key generation options
 */
 
-// Import and cache in memory only when used to generate keys. Garbage collected when function ends
+
 const generateKeyPairSync = (function () {
     try {
-        // return { generateKeyPairSync } = require('crypto');
-        return ({ generateKeyPairSync } = require('crypto'));
+        return require('crypto').generateKeyPairSync;
     } catch (err) {
         console.error(err);
     }
 })()
+
 
 // Function to generate the Public/Private key pairs.
 function generateKeys() {
@@ -29,5 +33,6 @@ function generateKeys() {
         }
     });
 }
+
 
 module.exports = generateKeys;
