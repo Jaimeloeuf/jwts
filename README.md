@@ -1,9 +1,14 @@
 # jwts
-A package for Signing/Creating and Verifying JWTs, with build in asymmetric key pair generation for the token signature with the crypto module.
+A package for Signing/Creating and Verifying JWTs, with build in asymmetric key pair generation for the token signature with the crypto module.  
+[NPM package link](https://www.npmjs.com/package/jwts)
 
 ## Installation
-```
-npm install --save jwts
+```cli
+# Install into node_modules/ and save as dependency in package.json
+npm i jwts
+
+# Install package to use in production without installing the package's devDependencies
+npm i jwts --production
 ```
 
 ## How to use
