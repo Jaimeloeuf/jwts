@@ -50,7 +50,7 @@ function apply_keys() {
     */
     const { publicKey, privateKey } = generateKeys();
     return {
-        publicKey,
+        getPublicKey: () => publicKey,
         create_token: create_token(privateKey),
         verify_token: verify_token(publicKey)
     };
