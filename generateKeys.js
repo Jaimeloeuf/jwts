@@ -25,10 +25,10 @@ const generateKeyPairSync = (function () {
 
 
 // Function to generate the Public/Private key pairs.
-function generateKeys() {
+function generateKeys(modulusLength = 2048) {
     // Generate a key with the RS256 algorithm.
     return generateKeyPairSync('rsa', {
-        modulusLength: 1024, // Can be changed to be longer like 4096 for added security
+        modulusLength, // Can be changed to be longer like 4096 for added security
         publicKeyEncoding: {
             type: 'spki',
             format: 'pem'

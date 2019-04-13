@@ -1,6 +1,7 @@
 # jwts
 A package for Signing/Creating and Verifying JWTs, with build in asymmetric key pair generation for the token signature with the crypto module.  
-[NPM package link](https://www.npmjs.com/package/jwts)
+[NPM package link](https://www.npmjs.com/package/jwts)  
+Note that this package is in the beta development phase. Any issues, please open on Github and contributions or comments are all welcomed too. Thanks for giving this a try!
 
 ## Installation
 ```cli
