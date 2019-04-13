@@ -40,7 +40,7 @@ const verify_token = (public_key) => (verifyOption) => (token, options = {}) => 
 
 
 // Function to get a create and verify token method with Asymmetric Keys built into them.
-function apply_keys() {
+function apply_keys(key_length = 2048) {
     /*  Generate Key pair and apply these keys into the curried functions' closure
     
         The public key is also returned, for use with other services, but the
@@ -48,7 +48,7 @@ function apply_keys() {
         
         Return object with the new create and verify token methods with the Keys applied
     */
-    const { publicKey, privateKey } = generateKeys();
+    const { publicKey, privateKey } = generateKeys(key_length);
     return {
         getPublicKey: () => publicKey,
         create_token: create_token(privateKey),
