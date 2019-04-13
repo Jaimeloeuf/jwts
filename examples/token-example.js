@@ -9,7 +9,7 @@
 */
 
 // Destructure the methods out from the module for testing
-const { create_token, verify_token } = require('./token');
+const { create_token, verify_token, getPublicKey } = require('./token');
 // Shorthand utility binding
 const print = console.log;
 
@@ -42,12 +42,6 @@ function promise_version() {
             print(token.role);
         })
         .catch(print);
-
-    // Below's usage scenario is creating token and putting it in the header for client to use as a Cookie
-    // createToken(req)
-    //     .then(() => print(req))
-    //     .then(() => print(req.res_headers['Set-Cookie'])) // Use a set_cookie function to pass in the things to be set
-    //     .catch(print);
 }
 
 
@@ -86,3 +80,6 @@ async function test() {
 // Call the test function, and when the returned Promise resolves, print out the value resolved
 test()
     .then(print);
+
+// Call getPublicKey function to get the public Key used.
+print(getPublicKey());

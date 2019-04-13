@@ -27,7 +27,11 @@ const verify = jwt.verify_token(publicKey)({
     audience: "my_service"	// Enter your default verify token options
 })
 
-// Assuming the "jwt" is the jwt you want to verify
+
+/*  Assuming the "jwt" is the jwt you want to verify
+    "verify" will return a Promise, that will resolve with the verified and decoded token,
+    else it will reject with an error if the verification failed.
+*/
 verify(jwt);
 
 // Assuming you want to verify the jwt, with a different set of options
@@ -53,13 +57,22 @@ const verify = jwt.verify_token({
 });
 
 
-const token = create({
-	user: "james",
-    roles: "admin"
-}); // Expected output is the encoded token
-
-verify(token);
-// Expected output is the decoded token if correct, else an error
+// Self invoked async function to use await on the Promises
+(async function() {
+    /*  "create" returns a Promise,
+        that will resolve with the signed and encoded token,
+        else it will reject with an error.
+    */
+    const token = await create({
+        user: "james",
+        roles: "admin"
+    });
+    
+    /*  "verify" returns a Promise, that will resolve with the verified and decoded token,
+        else it will reject with an error if the verification failed.
+    */
+    const decoded_token = await verify(token);
+})()
 ```
 
 ## JWTs, general structure and F.A.Qs
