@@ -3,6 +3,7 @@ A package for Signing/Creating and Verifying JWTs, with build in asymmetric key 
 [NPM package link](https://www.npmjs.com/package/jwts)  
 Note that this package is in the beta development phase. Any issues, please open on Github and contributions or comments are all welcomed too. Thanks for giving this a try!
 
+
 ## Installation
 ```cli
 # Install into node_modules/ and save as dependency in package.json
@@ -11,9 +12,12 @@ npm i jwts
 # Install package to use in production without installing the package's devDependencies
 npm i jwts --production
 ```
+This package, when installed using npm, contains only the required source files without all the tests and example codes.  
+To view the full codebase, clone this repository from [Github](https://github.com/Jaimeloeuf/jwts) instead.
+
 
 ## How to use
-- For examples on how to use this package, refer to the modules in the "example_code" directory. It includes a comprehensive list of all use cases for this package.
+- For examples on how to use this package, refer to the modules in the "example_code" directory. It includes a comprehensive list of all use cases for this package. Download the repo from the Github page, to access this directory.
 - To see how you can use this package to build a full Identity and Access Management service, refer to [this](https://github.com/Jaimeloeuf/police-man) IAM microservice for example.
 ###### Basic usecase (Note that all import statements are sync/blocking):
 ```js
@@ -31,8 +35,7 @@ const verify = jwt.verify_token(publicKey)({
 
 /*  Assuming the "jwt" is the jwt you want to verify
     "verify" will return a Promise, that will resolve with the verified and decoded token,
-    else it will reject with an error if the verification failed.
-*/
+    else it will reject with an error if the verification failed.   */
 verify(jwt);
 
 // Assuming you want to verify the jwt, with a different set of options
@@ -47,7 +50,7 @@ const jwt = require('jwts').apply_keys();
 
 jwt.getPublicKey(); // Get the generated publicKey
 
-/*	Apply default options object into the create and verify functions */
+/* Apply default options object into the create and verify functions */
 const create = jwt.create_token({
 	issuer: "auth-backend",
     audience: "my_service"	// Enter your default verify token options
@@ -62,19 +65,18 @@ const verify = jwt.verify_token({
 (async function() {
     /*  "create" returns a Promise,
         that will resolve with the signed and encoded token,
-        else it will reject with an error.
-    */
+        else it will reject with an error.  */
     const token = await create({
         user: "james",
         roles: "admin"
     });
     
     /*  "verify" returns a Promise, that will resolve with the verified and decoded token,
-        else it will reject with an error if the verification failed.
-    */
+        else it will reject with an error if the verification failed.   */
     const decoded_token = await verify(token);
 })()
 ```
+
 
 ## JWTs, general structure and F.A.Qs
 ##### F.A.Q
@@ -130,5 +132,10 @@ const verify = jwt.verify_token({
 - Note that if the native crypto module is not available, the process will be forced to quit!
 - This package is built on top of the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package, thus the dependencies includes the jsonwebtoken package and its dependencies.
 
+
 ## Author
 2019 Jaime Loeuf
+
+
+## License
+This package is made under the MIT license.
