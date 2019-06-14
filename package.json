@@ -22,12 +22,16 @@
     "simple",
     "asymmetric"
   ],
-  "author": "Jaime Loeuf",
+  "author": {
+    "name": "Jaime Loeuf",
+    "email": "jaimeloeuf@gmail.com",
+    "url": "https://jaimeloeuf.github.io/"
+  },
   "license": "MIT",
   "dependencies": {
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
-    "mocha": "^6.0.2"
+    "mocha": "^6.1.4"
   }
 }
