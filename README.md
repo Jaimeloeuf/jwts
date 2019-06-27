@@ -1,5 +1,6 @@
 # jwts
 A package for Signing/Creating and Verifying JWTs, with build in asymmetric key pair generation for the token signature with the crypto module.  
+Please view the latest changes is this [CHANGELOG.md](https://github.com/Jaimeloeuf/jwts/blob/master/CHANGELOG.md) file on the Github repository!  
 [NPM package link](https://www.npmjs.com/package/jwts)  
 Note that this package is in the beta development phase. Any issues, please open on Github and contributions or comments are all welcomed too. Thanks for giving this a try!
 
@@ -13,6 +14,7 @@ npm i jwts
 npm i jwts --production
 ```
 This package, when installed using npm, contains only the required source files without all the tests and example codes.  
+However the README and CHANGELOG file are included in the distribution package.  
 To view the full codebase, clone this repository from [Github](https://github.com/Jaimeloeuf/jwts) instead.
 
 
@@ -52,11 +54,11 @@ jwt.getPublicKey(); // Get the generated publicKey
 
 /* Apply default options object into the create and verify functions */
 const create = jwt.create_token({
-	issuer: "auth-backend",
+    issuer: "auth-backend",
     audience: "my_service"	// Enter your default verify token options
 });
 const verify = jwt.verify_token({
-	issuer: "auth-backend",
+    issuer: "auth-backend",
     audience: "my_service"	// Enter your default verify token options
 });
 
@@ -94,6 +96,20 @@ const verify = jwt.verify_token({
   - JWTs are used to prove access rights of a bearer
   - JWTs facilitate trusted data transfer in a stateless request
 ##### Example on what a JWT contains
+A good resource is on the jwt.io [website](https://jwt.io/introduction/).  
+From here on out, the client browser who holds the JWT, or a service or whatever that holds the JWT, will be referred to as the **bearer**.  
+In a JWT, especially one used as identity validator, it is suggested that you include the following key:value pairs:
+- "sub", short for subject
+    - This value should allow the service to identitfy Who this person is, or who is the bearer of this identity token
+- "scope"  /  "roles"
+    - Include a key:value pair that stores an array as the value
+    - The array should allow the service accepting the tokens to determine What this person can access with this token
+    - This should include things like read/write permissions to data in the database, service / application specific actions such as for example "account creation".
+    - The scope should be used for laying out the permissions, and the roles should define the the !!!!Group Access Policies!!!!!!
+        - Basically access management grouped by what type of user is this.
+        - So there should be another part of the service that specifically defines all user groups, and the actions that they are allowed to do.
+- When the token expires (exp)
+- Who issued the token (iss, short for issuer)
 ```js
     {
     	// Token headers
@@ -101,10 +117,6 @@ const verify = jwt.verify_token({
         "alg": "HS256" // The algorithm used for the signature is HMAC SHA-256
     }
     {
-        // Who this person is (sub, short for subject)
-        // What this person can access with this token (scope)
-        // When the token expires (exp)
-        // Who issued the token (iss, short for issuer)
         // These below declarations are known as Claims, because the token creator claims a set of assertions that can be used to ‘know’ things about the subject. Because the token is signed with a secret key, you can verify its signature and implicitly trust what is claimed.
         "exp": ,
         "iat": ,
