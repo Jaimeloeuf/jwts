@@ -1,5 +1,8 @@
 # Changelog for "jwts" package
-This project follows [Semantic Versioning](https://semver.org/)
+This project follows [Semantic Versioning](https://semver.org/).  
+- MAJOR version updates means incompatible API changes,
+- MINOR version updates means added functionality or change of implementation in a backwards-compatible manner
+- PATCH version means bug fixes or minor updates that are backwards-compatible.
 
 ## [1.2.6] - 22/06/19
 ### Highlight

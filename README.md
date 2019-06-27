@@ -1,8 +1,18 @@
 # jwts
 A package for Signing/Creating and Verifying JWTs, with build in asymmetric key pair generation for the token signature with the crypto module.  
-Please view the latest changes is this [CHANGELOG.md](https://github.com/Jaimeloeuf/jwts/blob/master/CHANGELOG.md) file on the Github repository!  
-[NPM package link](https://www.npmjs.com/package/jwts)  
-Note that this package is in the beta development phase. Any issues, please open on Github and contributions or comments are all welcomed too. Thanks for giving this a try!
+- [Github Homepage](https://github.com/Jaimeloeuf/jwts)  
+- [NPM package site](https://www.npmjs.com/package/jwts)  
+
+This project follows [Semantic Versioning](https://semver.org/)
+- MAJOR version updates means incompatible API changes,
+- MINOR version updates means added functionality or change of implementation in a backwards-compatible manner
+- PATCH version means bug fixes or minor updates that are backwards-compatible.
+
+Please view the documentation of latest changes in this [CHANGELOG.md](https://github.com/Jaimeloeuf/jwts/blob/master/CHANGELOG.md) file on the Github repository to see what has changed in the latest versions!  
+Please visit the Github [repo](https://github.com/Jaimeloeuf/jwts) for latest and most updated commits/changes. Versions published on NPM are more or less stable for use and are not updated as often as the remote repo.  
+If you plan on using this package in production, or share code that uses this package as dependency with others, always make sure that your code is working fine with the package using your tests, before locking the version you used in your dependency list. This is to prevent the package from being updated causing errors due to any possible breaking changes across the different versions, which may break your application, causing pain and tears.
+
+Note that this package is in currently in the beta phase, although it is mostly stable. Once all the tests has been written and a CI/CD pipeline is built out for this package, I will create a new Major version for release that will be marked as "Production Ready". If you have any issues, please open them on the Github page, contributions or comments are all welcomed too. My email is [here](mailto:jaimeloeuf@gmail.com) if you would like to reach out. Thanks for giving this a try!
 
 
 ## Installation
@@ -21,8 +31,9 @@ To view the full codebase, clone this repository from [Github](https://github.co
 ## How to use
 - For examples on how to use this package, refer to the modules in the "example_code" directory. It includes a comprehensive list of all use cases for this package. Download the repo from the Github page, to access this directory.
 - To see how you can use this package to build a full Identity and Access Management service, refer to [this](https://github.com/Jaimeloeuf/police-man) IAM microservice for example.
-###### Basic usecase (Note that all import statements are sync/blocking):
+###### Basic use case:
 ```js
+// Note all import statements here are synchronous & blocking. Lazy loading is recommended if the use is optional.
 // Require jwts to use the methods without using automated Key generation and binding
 const jwt = require('jwts');
 
@@ -145,9 +156,7 @@ In a JWT, especially one used as identity validator, it is suggested that you in
 - This package is built on top of the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package, thus the dependencies includes the jsonwebtoken package and its dependencies.
 
 
-## Author
-2019 Jaime Loeuf
-
-
-## License
-This package is made under the MIT license.
+## Licensing, Contributing and Author
+This package is made under the MIT license.  
+Feel free to fork and contribute to this project! If you need help or have any queries, feel free to reach out to me [here](mailto:jaimeloeuf@gmail.com), or simply create an issue on the Github page.  
+2019 - [Jaime Loeuf](https://github.com/Jaimeloeuf)
