@@ -9,19 +9,33 @@
 */
 
 
-const generateKeyPairSync = (function () {
-    try {
-        return require('crypto').generateKeyPairSync;
-    } catch (err) {
-        // Log error either to console, log file or logging service
-        console.error(err);
+// const generateKeyPairSync = (function () {
+//     try {
+//         return require('crypto').generateKeyPairSync;
+//     } catch (err) {
+//         /*  Previously, when the crypto module is not available,
+//             The entire process was forced to stop and all async processes killed, using "process.exit(1);"
 
-        // Force the entire process to stop and kill all async processes!
-        process.exit(1);
-        // Below is a safer process, by killing the process with a thrown error.
-        // throw new Error(err);
-    }
-})()
+//             Below is a safer process, by killing the process with a thrown error. */
+//         // throw new Error(err);
+
+//         // The safest way is to just notify user about it and let the process continue running.
+//         console.log(err)
+//     }
+// })()
+
+/*  tl;dr
+    Module is lazy loaded for stability and safety reasons rather than for performance reasons.
+
+    Explaination:
+    Wrapped the crypto require code in a function, as a lazy loaded module.
+    This is because if the crypto module is unavailable but not used by the package,
+    then the package should not attempt to import it, as it will cause import error
+    to be thrown for users who are not even using the automatic key generation feature,
+    which means it will break backward compatability with older node versions and systems
+    where the native crypto module is purposefully removed as they have their own ways of
+    doing secret management.    */
+const generateKeyPairSync = (() => require('crypto').generateKeyPairSync)();
 
 
 // Function to generate the Public/Private key pairs.
