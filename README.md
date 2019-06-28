@@ -20,12 +20,18 @@ Note that this package is in currently in the beta phase, although it is mostly 
 # Install into node_modules/ and save as dependency in package.json
 npm i jwts
 
-# Install package to use in production without installing the package's devDependencies
+# Install package to use in production without installing the package's development dependencies
 npm i jwts --production
 ```
 This package, when installed using npm, contains only the required source files without all the tests and example codes.  
 However the README and CHANGELOG file are included in the distribution package.  
 To view the full codebase, clone this repository from [Github](https://github.com/Jaimeloeuf/jwts) instead.
+
+
+## Dependencies
+- If token signing feature is to be used, then the native [crypto](https://nodejs.org/api/crypto.html) module must be available for automatic RSA key generation and binding.
+- **Note that if the native crypto module is not available, the process will be forced to quit!**
+- This package is built on top of the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package, thus the dependencies includes the jsonwebtoken package and its dependencies.
 
 
 ## How to use
@@ -148,12 +154,6 @@ In a JWT, especially one used as identity validator, it is suggested that you in
         "scope": ["read", "write", "update", "del"]
     }
 ```
-
-
-## Dependencies
-- If token signing feature is to be used, then the native [crypto](https://nodejs.org/api/crypto.html) module must be available for automatic RSA key generation and binding.
-- Note that if the native crypto module is not available, the process will be forced to quit!
-- This package is built on top of the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package, thus the dependencies includes the jsonwebtoken package and its dependencies.
 
 
 ## Licensing, Contributing and Author
