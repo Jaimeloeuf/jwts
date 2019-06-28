@@ -87,7 +87,4 @@ module.exports = {
     /*  Function to generate a new key pair and apply it into the curried functions' closure.
         Exporting the methods with the keys applied into their closures already */
     apply_keys,
-
-    // getPublicKey is exported for other modules/services to get latest public key to verify the JWT
-    getPublicKey: () => publicKey
 }
