@@ -19,8 +19,6 @@
 
 // Dependencies
 // Directly call apply_keys method to get create and verify token methods with key-pair baked in
-// const jwts = require('./jwt');
-// const jwt = jwts.apply_keys();
 const jwt = require('../src/index').apply_keys();
 
 
