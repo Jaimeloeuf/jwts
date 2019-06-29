@@ -1,6 +1,6 @@
 {
   "name": "jwts",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Simple JWT creation and verification package with build in Asymmetric key generation and use build on top of the jsonwebtoken package.",
   "main": "./src/index.js",
   "files": [
