@@ -29,8 +29,7 @@ To view the full codebase, clone this repository from [Github](https://github.co
 
 
 ## Dependencies
-- If token signing feature is to be used, then the native [crypto](https://nodejs.org/api/crypto.html) module must be available for automatic RSA key generation and binding.
-- **Note that if the native crypto module is not available, the process will be forced to quit!**
+- **Crypto Module** If token signing feature is to be used, then the native [crypto](https://nodejs.org/api/crypto.html) module must be available for automatic RSA key generation and binding, else the process will fail from the error thrown.
 - This package is built on top of the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package, thus the dependencies includes the jsonwebtoken package and its dependencies.
 
 

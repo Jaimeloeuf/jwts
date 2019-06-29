@@ -1,8 +1,22 @@
 # Changelog for "jwts" package
+This file documents the changes made to the package, ordered by the version numbers that the change was published under on NPM.  
 This project follows [Semantic Versioning](https://semver.org/).  
 - MAJOR version updates means incompatible API changes,
 - MINOR version updates means added functionality or change of implementation in a backwards-compatible manner
 - PATCH version means bug fixes or minor updates that are backwards-compatible.
+
+
+## [1.2.7] - 29/06/19
+### Highlight
+- README Cleanup, bug fixes and easier package development flow added.
+### Added
+- Added new dev dependency, nodemon, and new npm script for developers to use the nodemon dependency to auto restart test on file change.
+### Changed
+- Changed the code that does the lazy loading of the Crypto module to actually work, fixing mistake from the past implementation.
+- Updated the README
+### Removed
+- Removed potentially bug causing code that exports a value that is always undefined from the main module.
+
 
 ## [1.2.6] - 22/06/19
 ### Highlight
