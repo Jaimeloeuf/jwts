@@ -1,11 +1,14 @@
 # jwts
-A package for Signing/Creating and Verifying JWTs, with build in asymmetric key pair generation for the token signature with the crypto module.  
+**jwts** is a package for Signing/Creating and Verifying JWTs, more specifically JWS', with build in asymmetric key pair generation support for the digital signature using the native crypto module.  
 - [Github Homepage](https://github.com/Jaimeloeuf/jwts)  
 - [NPM package site](https://www.npmjs.com/package/jwts)  
 
+The package name "jwts" is made by combining both JWT and JWS.  
+**JWT** is the *JSON Web Token* specification, while **JWS** is the specification where a digital Signature of the JWT is included at the end of the JWT, to act as an anti-tamper measure. This package helps you to easily create **JWS** by dealing with the generation of Public/Private key pair, so you can just focus on writing the options and tokens to sign and verify.
+
 This project follows [Semantic Versioning](https://semver.org/)
-- MAJOR version updates means incompatible API changes,
-- MINOR version updates means added functionality or change of implementation in a backwards-compatible manner
+- MAJOR version updates means incompatible API changes.
+- MINOR version updates means added functionality or change of implementation in a backwards-compatible manner.
 - PATCH version means bug fixes or minor updates that are backwards-compatible.
 
 Please view the documentation of latest changes in this [CHANGELOG.md](https://github.com/Jaimeloeuf/jwts/blob/master/CHANGELOG.md) file on the Github repository to see what has changed in the latest versions!  
@@ -31,6 +34,10 @@ To view the full codebase, clone this repository from [Github](https://github.co
 ## Dependencies
 - **Crypto Module** If token signing feature is to be used, then the native [crypto](https://nodejs.org/api/crypto.html) module must be available for automatic RSA key generation and binding, else the process will fail from the error thrown.
 - This package is built on top of the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package, thus the dependencies includes the jsonwebtoken package and its dependencies.
+
+Node Versions Compatibility:
+This package should work with most modern Node JS versions, but this has only been tested on Node v10.  
+Will be building automated tests to run this package on different versions of node, to get a bigger picture for compatibility.
 
 
 ## How to use
