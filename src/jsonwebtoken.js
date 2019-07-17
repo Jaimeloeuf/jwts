@@ -1,8 +1,8 @@
 'use strict'; // Enforce use of strict verion of JavaScript
 
 /*  @Doc
-    This is a wrapper module over the jsonwebtoken package to export the
-    methods used after Promisfying them.
+    This is a wrapper module over the jsonwebtoken dependency
+    package to export its methods after Promisfying them.
 */
 
 // Export an object with only the Promisified sign and verify methods.
