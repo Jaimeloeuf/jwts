@@ -6,7 +6,14 @@ This project follows [Semantic Versioning](https://semver.org/).
 - PATCH version means bug fixes or minor updates that are backwards-compatible.
 
 
-## [1.2.7] - 29/06/19
+## [1.2.9] - 19/07/19
+### Highlight
+- Updated dependencies due to security vulnerability with lodash.
+### Changed
+- Updated dependencies
+
+
+## [1.2.8] - 30/06/19
 ### Highlight
 - README Cleanup, bug fixes and easier package development flow added.
 ### Added

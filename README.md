@@ -26,9 +26,11 @@ npm i jwts
 # Install package to use in production without installing the package's development dependencies
 npm i jwts --production
 ```
-This package, when installed using npm, contains only the required source files without all the tests and example codes.  
-However the README and CHANGELOG file are included in the distribution package.  
-To view the full codebase, clone this repository from [Github](https://github.com/Jaimeloeuf/jwts) instead.
+This package, when installed using npm, contains only the required source files, README and CHANGELOG files in the distribution package without all the tests and example codes.  
+To view the full implementation with tests and example codes, clone this repository from [Github](https://github.com/Jaimeloeuf/jwts) instead.  
+```cli
+git clone https://github.com/Jaimeloeuf/jwts
+```
 
 
 ## Dependencies
