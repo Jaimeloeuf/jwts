@@ -6,6 +6,8 @@
 The package name "jwts" is made by combining both JWT and JWS.  
 **JWT** is the *JSON Web Token* specification, while **JWS** is the specification where a digital Signature of the JWT is included at the end of the JWT, to act as an anti-tamper measure. This package helps you to easily create **JWS** by dealing with the generation of Public/Private key pair, so you can just focus on writing the options and tokens to sign and verify.
 
+
+## Project status
 This project follows [Semantic Versioning](https://semver.org/)
 - MAJOR version updates means incompatible API changes.
 - MINOR version updates means added functionality or change of implementation in a backwards-compatible manner.
@@ -165,6 +167,6 @@ In a JWT, especially one used as identity validator, it is suggested that you in
 
 
 ## Licensing, Contributing and Author
-This package is made under the MIT license.  
+This package is made under the MIT license, feel free to use it however you like.  
 Feel free to fork and contribute to this project! If you need help or have any queries, feel free to reach out to me [here](mailto:jaimeloeuf@gmail.com), or simply create an issue on the Github page.  
 2019 - [Jaime Loeuf](https://github.com/Jaimeloeuf)
