@@ -16,7 +16,8 @@
 
 // Dependencies
 // Directly call apply_keys method to get create and verify token methods with key-pair baked in
-const jwt = require('../src/index').apply_keys();
+// const jwts = require('../src/index');
+// const jwts = require('../src/index').apply_keys();
 
 // Shorthand utility binding
 const print = console.log;
@@ -25,8 +26,7 @@ const print = console.log;
 const signOptions = {
     issuer: 'Mysoft corp',
     subject: 'some@user.com',
-    // audience: 'https://Promist.io',
-    audience: ['https://Promist.io', '.... all the services names'],
+    audience: ['auth-service', 'user-service'],
     expiresIn: '10m', // Give the token a 10min lifetime
     algorithm: 'RS256' // Must be RS256 as using asymmetric signing
 };
@@ -35,8 +35,7 @@ const signOptions = {
 const verifyOptions = {
     issuer: 'Mysoft corp',
     subject: 'some@user.com',
-    // audience: 'https://Promist.io',
-    audience: ['https://Promist.io', '.... all the services names'],
+    audience: ['auth-service', 'user-service'],
     algorithm: ['RS256'] // Unlike signOption that we used while signing new token , we will use verifyOptions to verify the shared token by client. The only difference is, here the algorithm is Array [“RS256”].
 };
 
@@ -84,24 +83,5 @@ async function asyncawait_version() {
     }
 }
 
-
-async function test() {
-    /*  The 2 Async functions below are called with await keyword, to make sure that
-        the execution pauses at after call until the async function resolves or ends.
-        Thus allowing proper execution scheduling/structuring with the async code.
-    */
-    await promise_version();
-    await asyncawait_version();
-    /*  If functions are ran without the await keywords, they will not execute in order
-        and thus the results will show both functions printing out the token and length
-        one by one before printing out the decoded token with role one by one.
-    */
-    // promise_version();
-    // asyncawait_version();
-
-    // Resolve with the 'finnished' word upon the above 2 promises resolving
-    return 'finnished';
-}
-// Call the test function, and when the returned Promise resolves, print out the value resolved
-test()
-    .then(print);
+promise_version()
+asyncawait_version()
