@@ -18,6 +18,7 @@
 // Directly call apply_keys method to get create and verify token methods with key-pair baked in
 // const jwts = require('../src/index');
 // const jwts = require('../src/index').apply_keys();
+const jwt = require('../src/index').apply_keys();
 
 // Shorthand utility binding
 const print = console.log;
@@ -44,7 +45,8 @@ const verifyOptions = {
 const create_token = jwt.create_token(signOptions);
 const verify_token = jwt.verify_token(verifyOptions);
 
-const token = {
+// Object with User details that is used as the Token.
+const user_object = {
     id: 1,
     username: 'brad',
     email: 'brad@gmail.com',
@@ -54,7 +56,7 @@ const token = {
 
 function promise_version() {
     // Using the token module's API with Promises
-    create_token(token, { subject: 'bryan@gmail.com' })
+    create_token(user_object, { subject: 'bryan@gmail.com' })
         .then(token => {
             print(token);
             print(token.length);
@@ -72,7 +74,7 @@ function promise_version() {
 async function asyncawait_version() {
     // Using the token module's API with the Async/Await keywords
     try {
-        const token = await create_token(token);
+        const token = await create_token(user_object);
         print(token);
         print(token.length);
         const decoded_token = await verify_token(token);
