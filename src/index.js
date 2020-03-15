@@ -1,26 +1,22 @@
 'use strict'; // Enforce use of strict verion of JavaScript
 
-/*	@Doc Module description:
-    This module is a wrapper over the 'jsonwebtoken' package to create/read/sign/verify a token,
-    but with added automatically generated asymmetric key-pair on startup.
-
-    @TODO
-    - Create a global variable to store the current publicKey used, which will be set every time the
-      apply_keys function is ran or when the node-forge based publicKey generation function is ran.
-    - Try to move the wrapper functions from token module over to this module.
-    - Do JsDocs for this module before publishing
-    - Create 1 Function to extract JWTs from header or token automatically.
-    - Add a function to coerce Auth header to either all lower or upper case (No need if using Express)
-        ^ Basically use a regex to specify all case-insensitive?
-        ^ Loop over all the properties in the request header and try to find a match using regex
-    - Write unit test for this module
-    - Start implementing JWEs
-    - Create interface or give option for the Public/Private key pair to be generated and changed repeatedly.
-
-    If using the node-forge thing to gen public key from the private key, no need to expose the private
-    keys because in the function of private key generation, can just insert the private key into
-    the node forge function closure.
-*/
+/**
+ * This module is a wrapper over the 'jsonwebtoken' package to create/read/sign/verify a token,
+ * but with added automatically generated asymmetric key-pair on startup.
+ * 
+ * @todo Create global variable to store the current publicKey used, which is set every time apply_keys function or node-forge based publicKey generation function is ran.
+ * @todo Try to move the wrapper functions from token module over to this module.
+ * @todo Create 1 Function to extract JWTs from header or token automatically.
+ * @todo Add a function to coerce Auth header to either all lower or upper case (No need if using Express)
+ *      - Basically use a regex to specify all case-insensitive?
+ *      - Loop over all properties in the request header to find a match using regex
+ * @todo Implement JWEs
+ * @todo Create interface or give option for the Public/Private key pair to be generated and changed repeatedly.
+ * 
+ * @notes If using the node-forge thing to gen public key from the private key, no need to expose the private
+ *      keys because in the function of private key generation, can just insert the private key into
+ *      the node forge function closure. 
+ */
 
 // Dependencies
 const { sign, verify } = require('./jsonwebtoken');

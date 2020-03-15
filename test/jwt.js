@@ -1,8 +1,8 @@
 'use strict'; // Enforce use of strict verion of JavaScript
 
-/*  @Doc
-    Unit test for the jwt module.
-*/
+/**
+ * Unit test for the jwt module.
+ */
 
 const assert = require('assert');
 
@@ -20,10 +20,10 @@ describe('Normal jwts usage', function () {
 });
 
 
-/*  - Everytime you want to use a auto gen key pair that is injected into the functions,
-    call the apply_keys functions and destructure the stuff out.
-    - If you just want to use verify token with a key you have, then skip the above shit.
-*/
+/**
+ * @notice Call apply_keys functions and destructure the stuff out to auto gen a key pair and inject it into the functions
+ * @notice If you just want to use verify token with a key you have, then skip the above
+ */
 describe('jwts with apply_keys() usage', function () {
     const jwts = require('../src/index').apply_keys();
 
