@@ -27,19 +27,25 @@
 
 // Function to generate the Public/Private key pairs.
 function generateKeys(modulusLength = 2048) {
-    const { generateKeyPairSync } = require('crypto');
-    // Generate a key with the RS256 algorithm.
-    return generateKeyPairSync('rsa', {
-        modulusLength, // Can be changed to be longer like 4096 for added security
-        publicKeyEncoding: {
-            type: 'spki',
-            format: 'pem'
-        },
-        privateKeyEncoding: {
-            type: 'pkcs8',
-            format: 'pem',
-        }
-    });
+    try {
+        const { generateKeyPairSync } = require('crypto');
+        // Generate a key with the RS256 algorithm.
+        return generateKeyPairSync('rsa', {
+            modulusLength, // Can be changed to be longer like 4096 for added security
+            publicKeyEncoding: {
+                type: 'spki',
+                format: 'pem'
+            },
+            privateKeyEncoding: {
+                type: 'pkcs8',
+                format: 'pem',
+            }
+        });       
+    } catch (err) {
+        console.log("'jwts' package failed to load as 'crypto' is not available, apply_keys() function requires 'crypto'")
+        console.error(err);
+        return;
+    }
 }
 
 
