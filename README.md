@@ -56,7 +56,7 @@ const jwt = require('jwts');
 /* Assuming you got the publicKey from a secret management service. Create
    a verification function by partially applying in the publicKey and the
    default verification options.	*/
-const verify = jwt.verify_token(publicKey)({
+const verify = jwt.verifyToken(publicKey)({
 	issuer: "auth-backend",
     audience: "my_service"	// Enter your default verify token options
 })
@@ -73,18 +73,18 @@ verify(jwt, {
 });
 ```
 ```js
-/* Directly call the "apply_keys" method if you want to both create and verify the
+/* Directly call the "applyKeys" method if you want to both create and verify the
    tokens with automatically generated RSA key pair binded into the functions.	*/
-const jwt = require('jwts').apply_keys();
+const jwt = require('jwts').applyKeys();
 
 jwt.getPublicKey(); // Get the generated publicKey
 
 /* Apply default options object into the create and verify functions */
-const create = jwt.create_token({
+const create = jwt.createToken({
     issuer: "auth-backend",
     audience: "my_service"	// Enter your default verify token options
 });
-const verify = jwt.verify_token({
+const verify = jwt.verifyToken({
     issuer: "auth-backend",
     audience: "my_service"	// Enter your default verify token options
 });
