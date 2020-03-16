@@ -5,6 +5,15 @@ This project follows [Semantic Versioning](https://semver.org/).
 - MINOR version updates means added functionality or change of implementation in a backwards-compatible manner
 - PATCH version means bug fixes or minor updates that are backwards-compatible.
 
+## [2.0.0] - 16/03/20
+### Highlight
+- The API now uses camelCase.
+### Added
+- linter, lint configuration files and npm run script for linting
+### Changed
+- Ran linter on all files thus files have been modified and changed.
+- The API has changed to use camelCase now.
+- Updated the code comments and documentations to use JSDoc
 
 ## [1.2.9] - 19/07/19
 ### Highlight
